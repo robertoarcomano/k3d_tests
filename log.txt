@@ -1,0 +1,46 @@
+Tue 18 May 12:36:05 CEST 2021
++ SERVERS=1
++ AGENTS=1
++ CLUSTER=cluster1
++ k3d cluster create cluster1 --servers 1 --agents 1
+[36mINFO[0m[0000] Prep: Network                                
+[36mINFO[0m[0000] Created network 'k3d-cluster1' (ca9b2a89f0a3f22db4ced2330372c8038b698c48df449a15e6f9d89bd8875363) 
+[36mINFO[0m[0000] Created volume 'k3d-cluster1-images'         
+[36mINFO[0m[0001] Creating node 'k3d-cluster1-server-0'        
+[36mINFO[0m[0001] Creating node 'k3d-cluster1-agent-0'         
+[36mINFO[0m[0001] Creating LoadBalancer 'k3d-cluster1-serverlb' 
+[36mINFO[0m[0001] Starting cluster 'cluster1'                  
+[36mINFO[0m[0001] Starting servers...                          
+[36mINFO[0m[0001] Starting Node 'k3d-cluster1-server-0'        
+[36mINFO[0m[0008] Starting agents...                           
+[36mINFO[0m[0008] Starting Node 'k3d-cluster1-agent-0'         
+[36mINFO[0m[0021] Starting helpers...                          
+[36mINFO[0m[0021] Starting Node 'k3d-cluster1-serverlb'        
+[36mINFO[0m[0021] (Optional) Trying to get IP of the docker host and inject it into the cluster as 'host.k3d.internal' for easy access 
+[36mINFO[0m[0026] Successfully added host record to /etc/hosts in 3/3 nodes and to the CoreDNS ConfigMap 
+[36mINFO[0m[0026] Cluster 'cluster1' created successfully!     
+[36mINFO[0m[0026] --kubeconfig-update-default=false --> sets --kubeconfig-switch-context=false 
+[36mINFO[0m[0026] You can now use it like this:                
+kubectl config use-context k3d-cluster1
+kubectl cluster-info
++ kubectl get nodes
+NAME                    STATUS   ROLES                  AGE   VERSION
+k3d-cluster1-server-0   Ready    control-plane,master   17s   v1.20.6+k3s1
+k3d-cluster1-agent-0    Ready    <none>                 7s    v1.20.6+k3s1
+++ kubectl run -it busybox --image=busybox --restart=OnFailure -- busybox echo 45+64
+++ bc
++ OUTPUT=109
++ '[' 109 -eq 109 ']'
++ echo 'Test ok'
+Test ok
++ k3d cluster delete cluster1
+[36mINFO[0m[0000] Deleting cluster 'cluster1'                  
+[36mINFO[0m[0000] Deleted k3d-cluster1-serverlb                
+[36mINFO[0m[0000] Deleted k3d-cluster1-agent-0                 
+[36mINFO[0m[0001] Deleted k3d-cluster1-server-0                
+[36mINFO[0m[0001] Deleting cluster network 'k3d-cluster1'      
+[36mINFO[0m[0001] Deleting image volume 'k3d-cluster1-images'  
+[36mINFO[0m[0001] Removing cluster details from default kubeconfig... 
+[36mINFO[0m[0001] Removing standalone kubeconfig file (if there is one)... 
+[36mINFO[0m[0001] Successfully deleted cluster cluster1!       
+Tue 18 May 12:36:50 CEST 2021
