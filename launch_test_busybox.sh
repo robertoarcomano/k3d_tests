@@ -1,5 +1,5 @@
 #!/bin/bash
-# Launch and log test_load_balancing.sh
+# Launch and log test_busybox.sh
 
 # Constants
 LOG=log.txt
@@ -8,7 +8,7 @@ LOG=log.txt
 date | tee $LOG
 
 # 2. launch script
-./test_load_balancing.sh 2>&1 | tee -a $LOG
+bash -x ./test_busybox.sh 2>&1 | tee -a $LOG
 
 # 3. log date
 date | tee -a $LOG

@@ -3,8 +3,11 @@ Tests on k3d
 
 ## Intro
 * K3d installation: <a href=install.sh> install.sh </a> 
-* Setup and test K3d environment using busybox image: <a href=setup_and_test.sh> setup_and_test.sh </a>
-* Start script: <a href=start.sh> start.sh </a>
+* Busybox test: <a href=test_busybox.sh> test_busybox.sh </a>
+* Load balancing test with dockerlemp images:  <a href=test_loadbalancing.sh> test_loadbalancing.sh </a>
+* Start scripts:
+  - <a href=launch_test_busybox.sh> launch_test_busybox.sh </a>
+  - <a href=launch_test_loadbalancing.sh> launch_test_loadbalancing.sh </a>
 * log file: <a href=log.txt> log.txt </a>
 
 
