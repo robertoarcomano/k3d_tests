@@ -22,13 +22,13 @@ kubectl create service clusterip dockerlempdb --tcp=3306:3306
 kubectl apply -f ingress.yaml
 
 # 5. Scale to 3 replicas
-kubectl scale deployment dockerlempweb --replicas 3
+#kubectl scale deployment dockerlempweb --replicas 1
 
 # 6. Wait until all the pods are ready
 while [ "$(kubectl get pods| grep -c ContainerCreating)" -gt 0 ]; do sleep 1; done
 
 # 7. Restart PHP. Not clear why this is needed
-kubectl get pods|grep ^dockerlempweb|awk '{print $1}'|while read H; do kubectl exec $H -- /etc/init.d/php7.4-fpm restart; done
+#kubectl get pods|grep ^dockerlempweb|awk '{print $1}'|while read H; do kubectl exec $H -- /etc/init.d/php7.4-fpm restart; done
 
 # 8. Test services
 for i in $(seq 1 10); do
