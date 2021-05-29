@@ -1,43 +1,121 @@
-Thu 27 May 09:52:02 CEST 2021
+Sat 29 May 18:59:44 CEST 2021
 [36mINFO[0m[0000] Deleting cluster 'dockerlemp'                
 [36mINFO[0m[0000] Deleted k3d-dockerlemp-serverlb              
-[36mINFO[0m[0000] Deleted k3d-dockerlemp-agent-2               
-[36mINFO[0m[0002] Deleted k3d-dockerlemp-agent-1               
 [36mINFO[0m[0002] Deleted k3d-dockerlemp-agent-0               
-[36mINFO[0m[0003] Deleted k3d-dockerlemp-server-0              
-[36mINFO[0m[0003] Deleting cluster network 'k3d-dockerlemp'    
-[36mINFO[0m[0003] Deleting image volume 'k3d-dockerlemp-images' 
-[36mINFO[0m[0003] Removing cluster details from default kubeconfig... 
-[36mINFO[0m[0003] Removing standalone kubeconfig file (if there is one)... 
-[36mINFO[0m[0003] Successfully deleted cluster dockerlemp!     
+[36mINFO[0m[0004] Deleted k3d-dockerlemp-server-0              
+[36mINFO[0m[0004] Deleting cluster network 'k3d-dockerlemp'    
+[36mINFO[0m[0004] Deleting image volume 'k3d-dockerlemp-images' 
+[36mINFO[0m[0004] Removing cluster details from default kubeconfig... 
+[36mINFO[0m[0004] Removing standalone kubeconfig file (if there is one)... 
+[36mINFO[0m[0004] Successfully deleted cluster dockerlemp!     
 [36mINFO[0m[0000] Prep: Network                                
-[36mINFO[0m[0000] Created network 'k3d-dockerlemp' (1221060c05e8fa94d09f1f779943df3627e5e72c7295253375835cdf8dc4eb7e) 
+[36mINFO[0m[0000] Created network 'k3d-dockerlemp' (4fe00818c30f2505147efcc9a1efe1335187d09c65d35900177371efd933fdd7) 
 [36mINFO[0m[0000] Created volume 'k3d-dockerlemp-images'       
 [36mINFO[0m[0001] Creating node 'k3d-dockerlemp-server-0'      
 [36mINFO[0m[0001] Creating node 'k3d-dockerlemp-agent-0'       
-[36mINFO[0m[0001] Creating node 'k3d-dockerlemp-agent-1'       
-[36mINFO[0m[0001] Creating node 'k3d-dockerlemp-agent-2'       
 [36mINFO[0m[0001] Creating LoadBalancer 'k3d-dockerlemp-serverlb' 
 [36mINFO[0m[0001] Starting cluster 'dockerlemp'                
 [36mINFO[0m[0001] Starting servers...                          
 [36mINFO[0m[0001] Starting Node 'k3d-dockerlemp-server-0'      
 [36mINFO[0m[0008] Starting agents...                           
 [36mINFO[0m[0008] Starting Node 'k3d-dockerlemp-agent-0'       
-[36mINFO[0m[0021] Starting Node 'k3d-dockerlemp-agent-1'       
-[36mINFO[0m[0028] Starting Node 'k3d-dockerlemp-agent-2'       
-[36mINFO[0m[0037] Starting helpers...                          
-[36mINFO[0m[0037] Starting Node 'k3d-dockerlemp-serverlb'      
-[36mINFO[0m[0038] (Optional) Trying to get IP of the docker host and inject it into the cluster as 'host.k3d.internal' for easy access 
-[36mINFO[0m[0045] Successfully added host record to /etc/hosts in 5/5 nodes and to the CoreDNS ConfigMap 
-[36mINFO[0m[0045] Cluster 'dockerlemp' created successfully!   
-[36mINFO[0m[0045] --kubeconfig-update-default=false --> sets --kubeconfig-switch-context=false 
-[36mINFO[0m[0045] You can now use it like this:                
+[36mINFO[0m[0021] Starting helpers...                          
+[36mINFO[0m[0021] Starting Node 'k3d-dockerlemp-serverlb'      
+[36mINFO[0m[0021] (Optional) Trying to get IP of the docker host and inject it into the cluster as 'host.k3d.internal' for easy access 
+[36mINFO[0m[0027] Successfully added host record to /etc/hosts in 3/3 nodes and to the CoreDNS ConfigMap 
+[36mINFO[0m[0027] Cluster 'dockerlemp' created successfully!   
+[36mINFO[0m[0027] --kubeconfig-update-default=false --> sets --kubeconfig-switch-context=false 
+[36mINFO[0m[0027] You can now use it like this:                
 kubectl config use-context k3d-dockerlemp
 kubectl cluster-info
-deployment.apps/dockerlempweb created
 deployment.apps/dockerlempdb created
-service/dockerlempweb created
 service/dockerlempdb created
+deployment.apps/dockerlempweb created
+service/dockerlempweb created
 ingress.networking.k8s.io/dockerlempweb created
+--2021-05-29 19:02:56--  http://localhost:8081/
+Resolving localhost (localhost)... 127.0.0.1
+Connecting to localhost (localhost)|127.0.0.1|:8081... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 494 [text/html]
+Saving to: ‘STDOUT’
+dockerlempweb-554479d77d-rxbg8<table border=1>
+<tr> <th>ID</th> <th>NAME</th> </tr>
+  <tr> <td>1</td> <td>User 0</td> </tr>
+  <tr> <td>2</td> <td>User 1</td> </tr>
+  <tr> <td>3</td> <td>User 2</td> </tr>
+  <tr> <td>4</td> <td>User 3</td> </tr>
+  <tr> <td>5</td> <td>User 4</td> </tr>
+  <tr> <td>6</td> <td>User 5</td> </tr>
+  <tr> <td>7</td> <td>User 6</td> </tr>
+  <tr> <td>8</td> <td>User 7</td> </tr>
+  <tr> <td>9</td> <td>User 8</td> </tr>
+  <tr> <td>10</td> <td>User 9</td> </tr>
+</table>
+
+     0K                                                       100% 35.8M=0s
+
+2021-05-29 19:02:56 (35.8 MB/s) - written to stdout [494/494]
+
 deployment.apps/dockerlempweb scaled
-dockerlempweb-85df886b5c-25vznConnection failed: No such file or directorydockerlempweb-85df886b5c-5nmpbConnection failed: No such file or directorydockerlempweb-85df886b5c-j8xsgConnection failed: No such file or directorydockerlempweb-85df886b5c-25vznConnection failed: No such file or directorydockerlempweb-85df886b5c-5nmpbConnection failed: No such file or directorydockerlempweb-85df886b5c-j8xsgConnection failed: No such file or directorydockerlempweb-85df886b5c-25vznConnection failed: No such file or directorydockerlempweb-85df886b5c-5nmpbConnection failed: No such file or directorydockerlempweb-85df886b5c-j8xsgConnection failed: No such file or directorydockerlempweb-85df886b5c-25vznConnection failed: No such file or directoryThu 27 May 09:55:58 CEST 2021
+Reading package lists...
+Building dependency tree...
+Reading state information...
+apache2-utils is already the newest version (2.4.41-4ubuntu3.1).
+0 to upgrade, 0 to newly install, 0 to remove and 72 not to upgrade.
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        nginx/1.18.0
+Server Hostname:        localhost
+Server Port:            8081
+
+Document Path:          /
+Document Length:        503 bytes
+
+Concurrency Level:      9
+Time taken for tests:   13.900 seconds
+Complete requests:      1000
+Failed requests:        992
+   (Connect: 0, Receive: 0, Length: 992, Exceptions: 0)
+Non-2xx responses:      8
+Total transferred:      688650 bytes
+HTML transferred:       517826 bytes
+Requests per second:    71.94 [#/sec] (mean)
+Time per request:       125.104 [ms] (mean)
+Time per request:       13.900 [ms] (mean, across all concurrent requests)
+Transfer rate:          48.38 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:     1  124  76.0    109     493
+Waiting:        1  124  76.0    108     492
+Total:          1  124  76.0    109     493
+
+Percentage of the requests served within a certain time (ms)
+  50%    109
+  66%    135
+  75%    157
+  80%    174
+  90%    227
+  95%    276
+  98%    340
+  99%    386
+ 100%    493 (longest request)
+Sat 29 May 19:04:16 CEST 2021

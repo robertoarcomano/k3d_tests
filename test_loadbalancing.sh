@@ -8,30 +8,32 @@ DOCKERLEMP_DB=robertoarcomano/dockerlemp_db
 k3d cluster delete $CLUSTER
 
 # 1. Create cluster $CLUSTER, redirecting port 80 to 8081
-k3d cluster create $CLUSTER --port 8081:80@loadbalancer --api-port 6443 --servers 1 --agents 3
+k3d cluster create $CLUSTER --port 8081:80@loadbalancer --api-port 6443 --servers 1 --agents 1
 
-# 2. Create deployments web and db
-kubectl create deployment dockerlempweb --image=$DOCKERLEMP_WEB
+# 2. Create deployments db + service 3306
 kubectl create deployment dockerlempdb --image=$DOCKERLEMP_DB
-
-# 3. Create service for ports 80, 3306
-kubectl create service clusterip dockerlempweb --tcp=80:80
 kubectl create service clusterip dockerlempdb --tcp=3306:3306
 
-# 4. Create ingress
-kubectl apply -f ingress.yaml
+# 4. Create deployments web + service 80
+kubectl create deployment dockerlempweb --image=$DOCKERLEMP_WEB
+kubectl create service clusterip dockerlempweb --tcp=80:80
 
-# 5. Scale to 3 replicas
-#kubectl scale deployment dockerlempweb --replicas 1
-
-# 6. Wait until all the pods are ready
+# 5. Wait until web is available
 while [ "$(kubectl get pods| grep -c ContainerCreating)" -gt 0 ]; do sleep 1; done
 
-# 7. Restart PHP. Not clear why this is needed
-#kubectl get pods|grep ^dockerlempweb|awk '{print $1}'|while read H; do kubectl exec $H -- /etc/init.d/php7.4-fpm restart; done
+# 6. Create ingress
+kubectl apply -f ingress.yaml
 
-# 8. Test services
-for i in $(seq 1 10); do
-  wget http://localhost:8081 -O - 2>/dev/null
-done
+# 7. Wait for a while
+sleep 60
 
+# 8. Test singole session
+wget http://localhost:8081/ -O -
+
+# 9. Scale to 9 replicas and wait to seattle down
+kubectl scale deployment dockerlempweb --replicas 9
+while [ "$(kubectl get pods| grep -c ContainerCreating)" -gt 0 ]; do sleep 1; done
+
+# 10. Install apache bench tool and use it to test the load balancing server
+sudo apt-get install -y apache2-utils
+ab -n 1000 -c 9 http://localhost:8081/
